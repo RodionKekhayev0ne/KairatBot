@@ -1,0 +1,40 @@
+
+g	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¢¿÷İ1
+m
+java:S1301B"KReplace this "switch" statement by "if" statements to increase readability.(²‹›Øüÿÿÿÿ8¥¿÷İ1
+m
+java:S1301p"KReplace this "switch" statement by "if" statements to increase readability.(²‹›Øüÿÿÿÿ8¥¿÷İ1
+i
+java:S2789¸"FEnsure this "Optional" could never be null and remove this null-check.(ù•ÿğÿÿÿÿÿ8ò¶Ã÷İ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(…Œ©ÿøÿÿÿÿ8¦¿÷İ1
+j
+java:S2095à"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¾„•ª8Á¿÷İ1
+n
+java:S3655“"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(áı¾§8Á¿÷İ1
+n
+java:S3655—"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÍñÙ8Á¿÷İ1
+n
+java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(—Œò8ô÷Ä÷İ1
+s
+java:S3655×"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(»öüšÿÿÿÿÿ8Á¿÷İ1
+Z
+java:S2589¸"7Remove this expression which always evaluates to "true"(ù•ÿğÿÿÿÿÿ8·Ã÷İ1
+>
+java:S1170 "!Make this final field static too.(¼¬ã8Ä¿÷İ1
+D
+java:S1170"!Make this final field static too.(„ì‚ıÿÿÿÿ8Ä¿÷İ1
+t
+java:S3776="RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(‘ï‹şÿÿÿÿ8È¿÷İ1
+m	java:S128C"LEnd this switch case with an unconditional break, return or throw statement.(æ›İõûÿÿÿÿ8É¿÷İ1
+z	java:S131B"YComplete cases by adding the missing enum constants or add a default case to this switch.(²‹›Øüÿÿÿÿ8É¿÷İ1
+z	java:S131p"YComplete cases by adding the missing enum constants or add a default case to this switch.(²‹›Øüÿÿÿÿ8Ì¿÷İ1
+]	java:S899È";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8Ñ¿÷İ1
+q
+java:S4042È"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8Ñ¿÷İ1
+]	java:S899Ü";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8Ò¿÷İ1
+q
+java:S4042Ü"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8Ò¿÷İ1
+_
+java:S1117å"<Rename "filePath" which hides the field declared at line 32.(ÑàÁÆüÿÿÿÿ8Õ¿÷İ1
+d
+java:S1126’"AReplace this if-then-else statement by a single return statement.(¡§ç·üÿÿÿÿ8Û¿÷İ1

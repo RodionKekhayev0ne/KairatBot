@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/KairatBot.iml" filepath="$PROJECT_DIR$/.idea/KairatBot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TiketBot/TiketBot.iml" filepath="$PROJECT_DIR$/TiketBot/TiketBot.iml" />
+    </modules>
+  </component>
+</project>

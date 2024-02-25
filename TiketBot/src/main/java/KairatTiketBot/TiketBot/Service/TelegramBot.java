@@ -5,10 +5,6 @@ import KairatTiketBot.TiketBot.config.BotConfig;
 
 import KairatTiketBot.TiketBot.repo.CountRepo;
 import KairatTiketBot.TiketBot.repo.StudentRepo;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -30,10 +26,10 @@ import java.net.URL;
 @Component
 public class TelegramBot extends TelegramLongPollingBot {
 
-      final BotConfig config;
-      Integer ticketCount = 0;
-      int i = 1;
-      final String filePath = "src/main/resources/data.json";
+    final BotConfig config;
+    Integer ticketCount = 0;
+    int i = 1;
+    final String filePath = "src/main/resources/data.json";
 
 
     private AdminStatus status = AdminStatus.DEFAULT;
@@ -147,15 +143,17 @@ public class TelegramBot extends TelegramLongPollingBot {
         if (student.getTicketCount() < 3) {
             String answer = "Ваш билет";
 
+
             Integer num = countRepo.findById(1).get().getCount();
 
-            String path = "src/main/resources/tickets/Ticket_" + num + ".pdf";
+            String path = "TiketBot/src/main/resources/tickets/Ticket_" + num + ".pdf";
 
             TicketCount count = countRepo.findById(1).get();
             count.setCount(num - 1);
             countRepo.save(count);
 
             sendTicket(chatId, path, answer);
+            studentRepo.delete(student);
             student.setTicketCount(student.getTicketCount().intValue() + 1);
             studentRepo.save(student);
         }else {
@@ -183,26 +181,26 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private void sendTicket(long chatId, String path, String text){
 
-        if(studentRepo.findById(chatId).isPresent()) {
+        if(studentRepo.findById(chatId) != null) {
 
-                InputFile ticket = new InputFile(path);
-                File file = new File(path);
-                ticket.setMedia(file);
+            InputFile ticket = new InputFile(path);
+            File file = new File(path);
+            ticket.setMedia(file);
 
-                SendMessage message = new SendMessage();
-                message.setChatId(String.valueOf(chatId));
-                message.setText(text);
-                SendDocument document = new SendDocument();
-                document.setChatId(String.valueOf(chatId));
-                document.setDocument(ticket);
+            SendMessage message = new SendMessage();
+            message.setChatId(String.valueOf(chatId));
+            message.setText(text);
+            SendDocument document = new SendDocument();
+            document.setChatId(String.valueOf(chatId));
+            document.setDocument(ticket);
 
-                try {
-                    execute(message);
-                    execute(document);
-                    file.delete();
-                } catch (TelegramApiException ex) {
-                    ex.printStackTrace();
-                }
+            try {
+                execute(message);
+                execute(document);
+                file.delete();
+            } catch (TelegramApiException ex) {
+                ex.printStackTrace();
+            }
 
         }
 
@@ -214,10 +212,11 @@ public class TelegramBot extends TelegramLongPollingBot {
 
 
         for (Student student : studentRepo.findAll()){
+            student = studentRepo.findById(student.getId()).get();
             student.setTicketCount(0);
             studentRepo.save(student);
         }
-        File file = new File("src/main/resources/");
+        File file = new File("TiketBot/src/main/resources");
         file.delete();
 
         URL url = new URL("https://api.telegram.org/bot" + getBotToken() + "/getFile?file_id=" + fileId);
@@ -229,7 +228,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         JSONObject path = result.getJSONObject("result");
         String filePath = path.getString("file_path");
 
-        File localFile = new File("src/main/resources/" + fileName);
+        File localFile = new File("TiketBot/src/main/resources/" + fileName);
         InputStream inputStream = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + filePath).openStream();
 
         FileUtils.copyInputStreamToFile(inputStream,localFile);
@@ -242,9 +241,9 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void separateTickets(String path) throws Exception {
-
+        log.info("SEPARATING FROM " + path);
         String inputFilePath = path; // Замените на путь к вашему входному PDF-файлу
-        String outputDirectory = "src/main/resources/tickets/"; // Папка, в которую будут сохранены отдельные страницы
+        String outputDirectory = "TiketBot/src/main/resources/tickets/"; // Папка, в которую будут сохранены отдельные страницы
 
         try {
             PDDocument document = PDDocument.load(new File(inputFilePath));
@@ -287,56 +286,19 @@ public class TelegramBot extends TelegramLongPollingBot {
         }else {
             Student student = new Student();
             student.setName(userName);
-            student.setChatId(chatId);
+            student.setId(chatId);
             student.setTicketCount(0);
 
             studentRepo.save(student);
 
             log.info("Created new user - " + userName);
         }
-        }
-
-
-
-
     }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

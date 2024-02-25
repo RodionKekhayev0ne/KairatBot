@@ -1,29 +1,25 @@
 package KairatTiketBot.TiketBot.Service;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
-@Table(name = "tickets_count")
+@Table(name = "`count`")
+@Data
 public class TicketCount {
 
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    @Column(name = "searchId",nullable = false)
+    private Integer id;
 
-    public void setCount(Integer count) {
-        this.count = count;
-    }
+    @Column(name = "ticket_count")
+    private Integer count;
 
-    Integer count;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
 }
