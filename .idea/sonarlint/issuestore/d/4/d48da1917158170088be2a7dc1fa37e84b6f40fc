@@ -10,13 +10,13 @@ java:S2789¸"FEnsure this "Optional" could never be null and remove this null-c
 j
 java:S2095à"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¾„•ª8Á¿÷Ý1
 n
-java:S3655“"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(áý¾§8Á¿÷Ý1
-n
-java:S3655—"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÍñÙ8Á¿÷Ý1
-n
 java:S3655Ž"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(—Œòž8ô÷Ä÷Ý1
 s
 java:S3655×"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(»öüšÿÿÿÿÿ8Á¿÷Ý1
+n
+java:S3655—"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÍñÙ8Á¿÷Ý1
+n
+java:S3655“"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(áý¾§8Á¿÷Ý1
 Z
 java:S2589¸"7Remove this expression which always evaluates to "true"(ù•ÿðÿÿÿÿÿ8·Ã÷Ý1
 >

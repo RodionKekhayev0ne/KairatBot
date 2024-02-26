@@ -21,3 +21,7 @@ r
 BTiketBot/src/main/java/KairatTiketBot/TiketBot/repo/CountRepo.java,b\3\b39293fc8bcde234dee645cbce20b7ed8622ac98
 t
 DTiketBot/src/main/java/KairatTiketBot/TiketBot/repo/StudentRepo.java,7\0\70c1cde058d5afe7824c44a2a07bc340d7793bb2
+=
+TiketBot/mvnw,e\a\ea76872b5eb5317ec40b7b6aa56de1b0d85454d0
+A
+TiketBot/mvnw.cmd,8\6\86cd5518f6380d8ae7e4f43c3312c3b2a6d9c4d1
