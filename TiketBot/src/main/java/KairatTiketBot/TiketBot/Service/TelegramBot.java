@@ -139,25 +139,37 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private void startTicketTaker(long chatId){
 
-        Student student = studentRepo.findById(chatId).get();
-        if (student.getTicketCount() < 3) {
-            String answer = "Ваш билет";
+        TicketCount ticketCount = countRepo.findById(1).get();
+        if (ticketCount.getCount().intValue() < 1){
+            try {
+                SendMessage message = new SendMessage();
+                message.setChatId(String.valueOf(chatId));
+                message.setText("Просим прощения в данный момент билеты закончились");
+            }catch (Exception ex){
+                System.out.println("Проверка кол-ва билетов барахлит");
+            }
 
-
-            Integer num = countRepo.findById(1).get().getCount();
-
-            String path = "TiketBot/src/main/resources/tickets/Ticket_" + num + ".pdf";
-
-            TicketCount count = countRepo.findById(1).get();
-            count.setCount(num - 1);
-            countRepo.save(count);
-
-            sendTicket(chatId, path, answer);
-            studentRepo.delete(student);
-            student.setTicketCount(student.getTicketCount().intValue() + 1);
-            studentRepo.save(student);
         }else {
-            sendMenu(chatId,"Вам предоставленно максимальное число билетов '3 билета'");
+            Student student = studentRepo.findById(chatId).get();
+            if (student.getTicketCount() < 2) {
+                String answer = "Ваш билет";
+
+
+                Integer num = countRepo.findById(1).get().getCount();
+
+                String path = "C:\\Users\\L0veL1v3\\Desktop\\tickets\\Ticket_" + num + ".pdf";
+
+                TicketCount count = countRepo.findById(1).get();
+                count.setCount(num - 1);
+                countRepo.save(count);
+
+                sendTicket(chatId, path, answer);
+                studentRepo.delete(student);
+                student.setTicketCount(student.getTicketCount().intValue() + 1);
+                studentRepo.save(student);
+            } else {
+                sendMenu(chatId, "Вам предоставленно максимальное число билетов '2 билета'");
+            }
         }
     }
 
@@ -183,25 +195,31 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         if(studentRepo.findById(chatId) != null) {
 
-            InputFile ticket = new InputFile(path);
-            File file = new File(path);
-            ticket.setMedia(file);
+            Integer count = countRepo.findById(1).get().getCount();
+            if (count < 1){
+                SendMessage message = new SendMessage();
+                message.setChatId(String.valueOf(chatId));
+                message.setText("Просим прощения в данный момент билеты закончились");
+            }else {
+                InputFile ticket = new InputFile(path);
+                File file = new File(path);
+                ticket.setMedia(file);
 
-            SendMessage message = new SendMessage();
-            message.setChatId(String.valueOf(chatId));
-            message.setText(text);
-            SendDocument document = new SendDocument();
-            document.setChatId(String.valueOf(chatId));
-            document.setDocument(ticket);
+                SendMessage message = new SendMessage();
+                message.setChatId(String.valueOf(chatId));
+                message.setText(text);
+                SendDocument document = new SendDocument();
+                document.setChatId(String.valueOf(chatId));
+                document.setDocument(ticket);
 
-            try {
-                execute(message);
-                execute(document);
-                file.delete();
-            } catch (TelegramApiException ex) {
-                ex.printStackTrace();
+                try {
+                    execute(message);
+                    execute(document);
+                    file.delete();
+                } catch (TelegramApiException ex) {
+                    ex.printStackTrace();
+                }
             }
-
         }
 
     }
@@ -216,7 +234,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             student.setTicketCount(0);
             studentRepo.save(student);
         }
-        File file = new File("TiketBot/src/main/resources");
+        File file = new File("C:\\Users\\L0veL1v3\\Desktop\\tickets\\source\\");
         file.delete();
 
         URL url = new URL("https://api.telegram.org/bot" + getBotToken() + "/getFile?file_id=" + fileId);
@@ -228,7 +246,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         JSONObject path = result.getJSONObject("result");
         String filePath = path.getString("file_path");
 
-        File localFile = new File("TiketBot/src/main/resources/" + fileName);
+        File localFile = new File("C:\\Users\\L0veL1v3\\Desktop\\tickets\\source\\" + fileName);
         InputStream inputStream = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + filePath).openStream();
 
         FileUtils.copyInputStreamToFile(inputStream,localFile);
@@ -243,7 +261,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     private void separateTickets(String path) throws Exception {
         log.info("SEPARATING FROM " + path);
         String inputFilePath = path; // Замените на путь к вашему входному PDF-файлу
-        String outputDirectory = "TiketBot/src/main/resources/tickets/"; // Папка, в которую будут сохранены отдельные страницы
+        String outputDirectory = "C:\\Users\\L0veL1v3\\Desktop\\tickets\\"; // Папка, в которую будут сохранены отдельные страницы
 
         try {
             PDDocument document = PDDocument.load(new File(inputFilePath));

@@ -1,7 +1,7 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(…Œ©ÿøÿÿÿÿ
 m
-java:S1128	"PRemove this unused import 'org.springframework.data.mongodb.core.index.Indexed'.(§™õ÷8„µ ÷Ý1
+java:S1128	"PRemove this unused import 'org.springframework.data.mongodb.core.index.Indexed'.(§™õ÷8‰“ñ²Þ1
 q
 java:S1128
-"ORemove this unused import 'org.springframework.data.mongodb.repository.Update'.(¹ðìÀùÿÿÿÿ8„µ ÷Ý1
+"ORemove this unused import 'org.springframework.data.mongodb.repository.Update'.(¹ðìÀùÿÿÿÿ8‰“ñ²Þ1

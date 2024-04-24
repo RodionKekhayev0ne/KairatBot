@@ -3,8 +3,6 @@ s
 CTiketBot/src/main/java/KairatTiketBot/TiketBot/Service/Student.java,b\9\b914d7fdc695cd1f0c4d2020dd8c85240141514e
 u
 ETiketBot/src/main/java/KairatTiketBot/TiketBot/Admin/AdminStatus.java,c\0\c0c9e9e5c84e04af91e559175f7bcfae46fff2fa
-w
-GTiketBot/src/main/java/KairatTiketBot/TiketBot/TiketBotApplication.java,2\c\2cfd1ca58324693bec37ac057cf86a4d7115c2ad
 t
 DTiketBot/src/main/java/KairatTiketBot/TiketBot/config/BotConfig.java,e\0\e0fd62312c26126573dcdbc85c6b80e881f8a007
 w
@@ -25,3 +23,15 @@ DTiketBot/src/main/java/KairatTiketBot/TiketBot/repo/StudentRepo.java,7\0\70c1c
 TiketBot/mvnw,e\a\ea76872b5eb5317ec40b7b6aa56de1b0d85454d0
 A
 TiketBot/mvnw.cmd,8\6\86cd5518f6380d8ae7e4f43c3312c3b2a6d9c4d1
+C
+TiketBot/DockerFile,c\6\c65e320488ad317f42e45728acbfe74427a146e3
+C
+TiketBot/Dockerfile,4\8\4879d385f03967f5f2a8db69b0c5fc513d0ef7d1
+|
+LTiketBot/src/test/java/KairatTiketBot/TiketBot/TiketBotApplicationTests.java,f\e\fe1f65dfc2e9385e0984aa3cd56463bf553fb19d
+u
+ETiketBot/src/main/java/KairatTiketBot/TiketBot/TicketApplication.java,c\f\cf25ef43fd0acdc990c41c990aba0b1fcf54d0e3
+
+OTiketBot/src/main/java/KairatTiketBot/TiketBot/Service/CloudStorageService.java,2\3\2338feb140055e92bb2af80e58ba216fb776f53e
+C
+TiketBot/.gitignore,2\4\24d957f80b5c20c1ff9428e4aaf5e5e0df76a1e9
